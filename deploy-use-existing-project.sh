@@ -33,10 +33,10 @@
 
 # Set variables needed
 # random_number=$(echo $RANDOM)
-project_id="${gcloud config list --format 'value(core.project)' 2>/dev/null}"
+project_id=$DEVSHELL_PROJECT_ID
 
 # Get the account name who logged in above 
-gcp_account_name=$DEVSHELL_PROJECT_ID
+gcp_account_name=$(gcloud auth list --filter=status:ACTIVE --format="value(account)")
 
 # Get the Org Id (needed for org policies and creating the GCP project)
 org_id=$(gcloud organizations list --format="value(name)")
