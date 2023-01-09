@@ -32,8 +32,8 @@
 # gcloud auth application-default login
 
 # Set variables needed
-random_number=$(echo $RANDOM)
-project_id="data-analytics-demo-${random_number}"
+# random_number=$(echo $RANDOM)
+project_id="${gcloud config list --format 'value(core.project)' 2>/dev/null}"
 
 # Get the account name who logged in above 
 gcp_account_name=$(gcloud auth list --filter=status:ACTIVE --format="value(account)")
